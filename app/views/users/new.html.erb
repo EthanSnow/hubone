@@ -1,6 +1,15 @@
 <h1>new#user</h1>
 <h1>Sign Up</h1>
 
+
+<div id = 'etaaaText'>
+</div>
+
+<textarea id = 'inputtextarea' rows="4" cols="50"></textarea>
+<button type="button" onclick='buttonclicked()'>button</button>
+
+
+<h1>new#user</h1>
 <%= form_for @user do |f| %>
 	<% if @user.errors.any? %>
 		<div class="error_messages">
@@ -26,3 +35,47 @@
 	</p>
 	<p class="button"><%= f.submit %></p>
 <% end %>
+
+<script src="//js.pusher.com/2.2/pusher.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+//pusher init
+var pusher = new Pusher('b3551f312ec0f4d6ee1f');
+var channel = pusher.subscribe('private-channel-1');
+
+var text_box1 = document. getElementById('text_box1');
+var textarea = document.getElementById("etaaaText");
+var inputtextarea = document.getElementById("inputtextarea");
+var textNode = document.createTextNode("Hello TextNode");
+
+var triggered;
+var rateLimitEvent = null;
+rateLimitEvent = {
+                userID: 1,
+                x: 2,
+                y: 3
+            };
+var datafrompusher = null;
+
+
+
+
+channel.bind('client-event-1', function(data) {
+	var para = document.createElement("p");
+	textNode.textContent = data.text;
+	
+	para.appendChild(document.createTextNode(data.text));
+	textarea.appendChild(para);
+	
+    alert('An client event was triggered with message: ' + data);
+	
+});
+
+function buttonclicked(){
+	
+    channel.trigger('client-event-1', {text: inputtextarea.value});
+	inputtextarea.value = '';
+};
+</script>
+
+
