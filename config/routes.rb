@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 	get "log_in" => "sessions#new", :as => "log_in"
 	get "sign_up" => "users#new", :as => "sign_up"
 	post 'pusher/auth'
-	root :to => "users#new"
+	root :to => "main#index"
 	resources :users
 	resources :sessions
   

@@ -9,6 +9,7 @@ gem 'rails-footnotes', group: :development
 gem 'gon'
 gem 'pusher'
 gem "bcrypt"
+gem 'mailgun'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

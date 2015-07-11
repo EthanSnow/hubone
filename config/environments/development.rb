@@ -15,8 +15,12 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  # set delivery method to :smtp, :sendmail or :test
-  config.action_mailer.delivery_method = :smtp
+  
+  Mailgun.configure do |config|
+	config.api_key = 'key-45874fdeb99e6eb5e4a4cf79c5508d2d'
+	config.domain  = 'sandbox7a717ec61f2e4ecba7a804ac1d2416b4.mailgun.org'
+  end
+
   
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

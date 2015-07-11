@@ -1,0 +1,71 @@
+<h1>main#index</h1>
+
+<style>
+	.etaaaText p{
+		display: block;
+	}
+</style>
+
+<!--layout-->
+<div id = 'etaaaText'></div>
+
+<div id = 'inputblocks'>
+	<textarea id = 'inputname' rows="4" cols="50"></textarea>
+	<textarea id = 'inputtext' rows="4" cols="50"></textarea>
+	<button type="button" onclick='buttonclicked()'>button</button>
+</div>
+
+
+<script src="//js.pusher.com/2.2/pusher.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+//pusher init
+var pusher = new Pusher('b3551f312ec0f4d6ee1f');
+var channel = pusher.subscribe('private-channel-1');
+
+
+var text_box1 = document. getElementById('text_box1');
+var textarea = document.getElementById("etaaaText");
+var inputtext = document.getElementById("inputtext");
+var inputname = document. getElementById('inputname');
+var textNode = document.createTextNode("Hello TextNode");
+
+
+var triggered;
+var inputhash = null;
+inputhash = {
+                username: 1,
+                text: 2,
+            };
+var datafrompusher = null;
+
+
+
+
+channel.bind('client-event-1', function(data) {
+	
+	textarea.appendChild(creatnewpara(data));
+	
+    alert('An client event was triggered with message: ' + data);
+	
+});
+
+function buttonclicked(){
+	//set a hash
+	inputhash.username = inputname.value;
+	inputhash.text = inputtext.value;
+	//self action
+	textarea.appendChild(creatnewpara(inputhash));
+	//upload
+	
+    channel.trigger('client-event-1', inputhash);
+	inputtext.value = '';
+};
+function creatnewpara(data){
+	var para = document.createElement("p");
+	textNode.textContent = data.name + data.text;
+	para.appendChild(document.createTextNode(data.username +":"+ data.text));
+	return para;
+}
+
+</script>
