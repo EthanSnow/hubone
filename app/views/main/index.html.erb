@@ -8,8 +8,8 @@
 	<div id = 'chatroomText'></div>
 	<div id = 'chatroominput'>
 		<div id = 'inputblocks'>
-			<label>name: </label> <textarea id = 'inputname' ></textarea>
-			<label>message: </label> <textarea id = 'inputtext' ></textarea>
+			<textarea id = 'inputname' ></textarea>
+			<textarea id = 'inputtext' ></textarea>
 			<button type="button" onclick='buttonclicked()'>send</button>
 		</div>
 	</div>
@@ -30,14 +30,14 @@ var inputtext = document.getElementById("inputtext");
 var inputname = document. getElementById('inputname');
 var textNode = document.createTextNode("Hello TextNode");
 
-
-var triggered;
 var inputhash = null;
 inputhash = {
                 username: 1,
                 text: 2,
             };
-var datafrompusher = null;
+			
+inputname.value = name;
+inputtext.value = text;
 
 
 
@@ -49,6 +49,7 @@ channel.bind('client-event-1', function(data) {
     alert('An client event was triggered with message: ' + data);
 	
 });
+
 
 function buttonclicked(){
 	//set a hash
