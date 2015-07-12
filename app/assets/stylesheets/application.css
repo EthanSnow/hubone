@@ -26,6 +26,6 @@ html, body{
 	border:black 1px solid; 
 }
 #chatroominput{
-	position:absolute;
-	bottom:50px;
+	position:relative;
+	top:100%;
 }
