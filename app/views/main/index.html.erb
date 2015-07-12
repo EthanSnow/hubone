@@ -3,12 +3,16 @@
 
 
 <!--layout-->
-<div id = 'etaaaText'></div>
-
-<div id = 'inputblocks'>
-	<label>name: </label> <textarea id = 'inputname' ></textarea>
-	<label>message: </label> <textarea id = 'inputtext' ></textarea>
-	<button type="button" onclick='buttonclicked()'>button</button>
+<div id = 'chatroom'>
+	
+	<div id = 'chatroomText'></div>
+	<div id = 'chatroominput'>
+		<div id = 'inputblocks'>
+			<label>name: </label> <textarea id = 'inputname' ></textarea>
+			<label>message: </label> <textarea id = 'inputtext' ></textarea>
+			<button type="button" onclick='buttonclicked()'>send</button>
+		</div>
+	</div>
 </div>
 
 
@@ -21,7 +25,7 @@ var channel = pusher.subscribe('private-channel-1');
 
 
 var text_box1 = document. getElementById('text_box1');
-var textarea = document.getElementById("etaaaText");
+var textarea = document.getElementById("chatroomText");
 var inputtext = document.getElementById("inputtext");
 var inputname = document. getElementById('inputname');
 var textNode = document.createTextNode("Hello TextNode");
@@ -66,7 +70,7 @@ function creatnewpara(data){
 
 </script>
 <style>
-	.etaaaText p{
+	.chatroomText p{
 		display: block;
 		
 	}

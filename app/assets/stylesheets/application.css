@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+html, body{
+	height:100%;
+}
+#user_nav_item{
+	display:block;
+	float:right; 
+ 
+ }
+#chatroom{
+	height:80%;
+	border:black 1px solid; 
+}
+#chatroominput{
+	position:absolute;
+	bottom:50px;
+}
